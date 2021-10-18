@@ -1,0 +1,28 @@
+{
+	"pacientes":[
+		{
+			"nome" : "antonio rodriguez",
+			"idade": "67",
+			"estagio": "leve",
+			"marcha": "eubasico"
+		},
+		{
+			"nome" : "sean antonia rodriguez",
+			"idade": "70",
+			"estagio": "moderado",
+			"marcha": "eubasico"
+		},
+		{
+			"nome" : "shangela rodriguez",
+			"idade": "82",
+			"estagio": "moderado",
+			"marcha": "disbasico"
+		},
+		{
+			"nome" : "xuxa meneguel",
+			"idade": "92",
+			"estagio": "leve",
+			"marcha": "eubasico"
+		},
+	]	
+}
