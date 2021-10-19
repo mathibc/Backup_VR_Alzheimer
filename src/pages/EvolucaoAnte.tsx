@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Platform,
+  KeyboardAvoidingView
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Header } from "../components/Header";
+import { EvolucaoAnterior } from "../components/EvolucaoAnterior";
 import { ButtonCinza } from "../components/Button";
 
 export default function EvolucaoAnte() {
@@ -45,8 +46,12 @@ export default function EvolucaoAnte() {
   };
 
   return (
-    <SafeAreaView style={style.conteiner}>
-      <Header />
+    <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        enabled
+        style={style.conteiner}
+      >
+      <EvolucaoAnterior/>
 
       <View>
         <View style={style.selecionarData}>
@@ -83,7 +88,7 @@ export default function EvolucaoAnte() {
       <View style={style.botao}>
         <ButtonCinza title={"Voltar"} onPress={handleStart}></ButtonCinza>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 

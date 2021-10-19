@@ -30,7 +30,7 @@ export default function Paciente() {
     navigation.navigate("EvolucaoNova");
   }
   function handleStart2() {
-    navigation.navigate("Menu");
+    navigation.navigate("Lista");
   }
   function handleStart3() {
     navigation.navigate("EvolucaoAnte");

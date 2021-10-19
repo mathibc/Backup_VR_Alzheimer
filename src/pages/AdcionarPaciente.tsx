@@ -15,7 +15,7 @@ import {
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Header } from "../components/Header";
+import { CadastroPaciente } from "../components/CadastroPaciente";
 import { ButtonCinza, ButtonLaranja } from "../components/Button";
 
 export default function Registro() {
@@ -58,7 +58,7 @@ export default function Registro() {
         enabled
         style={style.conteiner}
       >
-        <Header />
+        <CadastroPaciente/>
         <ScrollView style={style.scrollview}>
           <Text style={style.texto}>Nome</Text>
           <TextInput style={style.box} />

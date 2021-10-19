@@ -10,14 +10,15 @@ import {
   Platform,
   ScrollView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  KeyboardAvoidingView
 } from "react-native";
 import { Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Header } from "../components/Header";
 import { ButtonCinza, ButtonLaranja } from "../components/Button";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Evolucao } from "../components/Evolucao";
 
 export default function CriarEvolucao() {
   const navigation = useNavigation();
@@ -54,8 +55,12 @@ export default function CriarEvolucao() {
   return (
     
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    <SafeAreaView style={estilo.conteiner}>
-      <Header/>
+    <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        enabled
+        style={estilo.conteiner}
+      >
+      <Evolucao/>
       <Text style={estilo.texto}>Data: </Text>
       <View>
       <View style={estilo.selecionarData}>
@@ -94,7 +99,7 @@ export default function CriarEvolucao() {
         <ButtonCinza title={"Voltar"} onPress={handleStart}></ButtonCinza>
         <ButtonLaranja title={"Salvar"} onPress={handleStart2}></ButtonLaranja>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 }

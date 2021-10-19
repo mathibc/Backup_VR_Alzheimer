@@ -12,11 +12,12 @@ export function Header(){
 const styles = StyleSheet.create({
     container:{
         width:'100%',
-        height:'13%',
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor:'#014573'
+        backgroundColor: '#00009C',
+        padding: 20,
+    
     },
 
     titulo:{

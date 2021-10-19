@@ -14,7 +14,7 @@ import {
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Header } from "../components/Header";
+import { Avaliacao} from "../components/Avaliacao";
 import { ButtonCinza, ButtonLaranja } from "../components/Button";
 
 export default function Registro() {
@@ -57,7 +57,7 @@ export default function Registro() {
         enabled
         style={style.conteiner}
       >
-        <Header />
+        <Avaliacao />
 
         <Text style={style.texto}>Altura do passo</Text>
         <TextInput style={style.box} />
