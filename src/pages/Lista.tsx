@@ -12,6 +12,7 @@ import {
   StatusBar,
   SafeAreaView,
 } from "react-native";
+import { Icon } from 'react-native-elements';
 import { Card } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/core";
@@ -24,10 +25,10 @@ export default function Lista() {
   const navigation = useNavigation();
 
   function handleStart() {
-    navigation.navigate("Paciente");
+    navigation.navigate("Menu");
   }
   function handleStart2() {
-    navigation.navigate("SelecionarVideos");
+    navigation.navigate("Paciente");
   }
 
   const mockData = [
@@ -35,10 +36,19 @@ export default function Lista() {
     { id: "2", text: "is" },
     { id: "3", text: "Awesome!" },
   ];
+  
 
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.header}>
+          <Icon
+          raised
+          name='arrow-left'
+          type='font-awesome'
+          color='#000000'
+          tvParallaxProperties={undefined}  
+          onPress={handleStart} 
+          style={styles.icon}/>
         <Text style={styles.textfooter}>Lista de Pacientes</Text>
       </View>
 
@@ -56,11 +66,14 @@ export default function Lista() {
     /></View>
 
 */}
-        <TouchableOpacity onPress={handleStart}>
+        <TouchableOpacity onPress={handleStart2}>
+        
           <View style={styles.telaTitulo}>
             <Text style={styles.usuario}>Pedro Fonseca</Text>
+
           </View>
         </TouchableOpacity>
+        
 
         <TouchableOpacity>
           <View style={styles.telaTitulo}>
@@ -139,13 +152,19 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: "#00009C",
-    padding: 20,
+    paddingTop: 30,
+    paddingRight:50,
     width: "100%",
-    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignContent:"center",
+    alignSelf:"center",
+    
   },
   textfooter: {
     color: "white",
     fontSize: 25,
+    alignSelf:"center"
   },
   body: {
     alignItems: "center",
@@ -269,7 +288,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginBottom: 10,
     marginLeft: 46,
-    alignItems: "center",
+    alignSelf: "flex-start",
     borderRadius: 25,
   },
 
@@ -288,26 +307,10 @@ const styles = StyleSheet.create({
     color: "#0080FF",
     marginLeft: 10,
   },
+  icon: {
+    
+    },
 
-  evolucao: {
-    width: 200,
-    height: 50,
-    backgroundColor: "orange",
-    marginTop: 25,
-    marginBottom: 10,
-    marginLeft: 1,
-    alignItems: "center",
-    borderRadius: 25,
-    alignContent: "flex-end",
-  },
 
-  voltar: {
-    width: 200,
-    height: 50,
-    backgroundColor: "#81BEF7",
-    marginTop: 25,
-    alignItems: "center",
-    borderRadius: 25,
-    alignContent: "flex-start",
-  },
+  
 });

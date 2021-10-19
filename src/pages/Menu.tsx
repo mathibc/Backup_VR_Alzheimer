@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
 import add from '../assets/Add.png'
 import list from '../assets/Lista.png'
@@ -23,10 +24,20 @@ export default function Menu() {
   function handleStart2(){
     navigation.navigate('AdcionarPaciente')
   }
+  function handleStart3(){
+    navigation.navigate('Login')
+  }
 
     return (
       <KeyboardAvoidingView style={styles.background}>
         <View style={styles.header}>
+          <Icon
+          raised
+          name='sign-out'
+          type='font-awesome'
+          color='#000000'
+          tvParallaxProperties={undefined}  
+          onPress={handleStart3}/>
           <Text style={styles.textfooter}>VR ALZHEIMER</Text>
         </View>
 
@@ -64,14 +75,19 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center'
   },
   header: {
-    backgroundColor: '#00009C',
-    padding: 20,
-    width: '100%',
-    alignItems: 'center',
+    backgroundColor: "#00009C",
+    paddingTop: 30,
+    paddingRight:50,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignContent:"center",
+    alignSelf:"center",
   },
   textfooter: {
     color: 'white',
     fontSize: 25,
+    alignSelf:"center"
   },
   body: {
     alignItems: 'center',
