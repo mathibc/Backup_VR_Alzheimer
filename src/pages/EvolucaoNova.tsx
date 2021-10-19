@@ -149,6 +149,7 @@ const estilo = StyleSheet.create({
   selecionarData: {
     backgroundColor:'white',
     width: 116,
+    borderRadius: 10,
   },
   scrollview: {
     width: "100%",

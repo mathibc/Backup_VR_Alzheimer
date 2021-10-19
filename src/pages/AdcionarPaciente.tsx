@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -21,7 +22,7 @@ export default function Registro() {
   const navigation = useNavigation();
 
   function handleStart() {
-    navigation.navigate("EvolucaoNova");
+    navigation.navigate("Menu");
   }
   function handleStart2() {
     navigation.navigate("Paciente");
@@ -58,21 +59,11 @@ export default function Registro() {
         style={style.conteiner}
       >
         <Header />
+        <ScrollView style={style.scrollview}>
+          <Text style={style.texto}>Nome</Text>
+          <TextInput style={style.box} />
 
-        <Text style={style.texto}>Altura do passo</Text>
-        <TextInput style={style.box} />
-
-        <Text style={style.texto}>Largura do passo</Text>
-        <TextInput style={style.box} />
-
-        <Text style={style.texto}>Comprimento do passo</Text>
-        <TextInput style={style.box} />
-
-        <Text style={style.texto}>Quantidade de passos</Text>
-        <TextInput style={style.box} />
-
-        <Text style={style.texto}>Data</Text>
-        <View>
+          <Text style={style.texto}>Data de Nascimento</Text>
           <View style={style.selecionarData}>
             <DateTimePicker
               testID="dateTimePicker"
@@ -82,15 +73,35 @@ export default function Registro() {
               onChange={onChange}
             />
           </View>
-        </View>
 
-        <View style={style.botao}>
-          <ButtonCinza title={"Voltar"} onPress={handleStart}></ButtonCinza>
-          <ButtonLaranja
-            title={"Salvar"}
-            onPress={handleStart2}
-          ></ButtonLaranja>
-        </View>
+          <Text style={style.texto}>Estágio da DA</Text>
+          <TextInput
+            placeholder="Leve, Moderada ou Avançada"
+            style={style.box}
+          />
+
+          <Text style={style.texto}>Comprometimento da Marcha</Text>
+          <TextInput
+            placeholder="Velocidade, Cadência, Postura,..."
+            style={style.box}
+          />
+
+          <Text style={style.texto}>QP e HDA</Text>
+          <TextInput
+            placeholder="Digite aqui"
+            multiline={true}
+            numberOfLines={10}
+            style={style.inputBox}
+          />
+
+          <View style={style.botao}>
+            <ButtonCinza title={"Voltar"} onPress={handleStart}></ButtonCinza>
+            <ButtonLaranja
+              title={"Salvar"}
+              onPress={handleStart2}
+            ></ButtonLaranja>
+          </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
@@ -104,32 +115,61 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
   },
   botao: {
-    width: "90%",
+    width: "80%",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginBottom: 20,
+    alignContent:"center",
+    alignSelf:"center",
+    marginBottom:100,
+    marginTop:20
   },
 
   box: {
     height: 45,
-    width: "70%",
+    width: 300,
     backgroundColor: "white",
     borderRadius: 10,
-    fontSize: 20,
+    fontSize: 16,
+    alignSelf: "flex-start",
+    marginLeft: 30,
+    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   texto: {
     color: "white",
     fontSize: 20,
     marginTop: 5,
-    marginLeft: 5,
+    marginLeft: 20,
+    alignSelf: "flex-start",
+    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   scrollview: {
-    width: 320,
-    height: 200,
+    width: "100%",
+    height: "100%",
   },
   selecionarData: {
     backgroundColor: "white",
     width: 116,
+    alignSelf: "flex-start",
     borderRadius: 10,
+    marginLeft: 30,
+  },
+  inputBox: {
+    height: "20%",
+    width: 300,
+    maxHeight: 300,
+    marginLeft: 30,
+    justifyContent: "flex-start",
+    backgroundColor: "white",
+    borderRadius: 10,
+    lineHeight: 20,
+    textAlign: "justify",
+    fontSize: 16,
+    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });

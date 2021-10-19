@@ -120,6 +120,7 @@ const style = StyleSheet.create({
   selecionarData: {
     backgroundColor: "white",
     width: 116,
+    borderRadius: 10,
   },
   inputBox: {
     justifyContent: "flex-start",

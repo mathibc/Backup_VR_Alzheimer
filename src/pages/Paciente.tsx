@@ -13,12 +13,14 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  Linking
 } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { Card } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/core";
 import logo from "../assets/VR_design.png";
+import question from "../assets/question.png";
 import { ButtonCinza, ButtonLaranja } from "../components/Button";
 
 export default function Paciente() {
@@ -75,9 +77,13 @@ export default function Paciente() {
         </View>
 
         <View style={styles.telaTitulo}>
+
           <Text style={styles.usuario}>Pedro Fonseca</Text>
-          <TouchableOpacity onPress={handleStart3}>
-            <Text style={styles.verPerfil}>ver evoluções</Text>
+          <Text style={styles.descricao}>Alzheimer Leve</Text>
+          <Text style={styles.descricao}>Postural e Velocidade</Text>
+
+          <TouchableOpacity onPress={handleStart3} style={styles.verEvolucoes}>
+            <Text>Ver Evoluções</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={showAlert} style={styles.comoUsar}>
             <Text>Como usar?</Text>
@@ -87,6 +93,14 @@ export default function Paciente() {
         <View style={styles.telaVideo}>
           <Text style={styles.usuario}>Valsa Venesiana</Text>
           <Text style={styles.info}>2 minutos</Text>
+
+          <TouchableOpacity
+   onPress={() => {
+      Linking.openURL( 'https://www.youtube.com/watch?v=3sM3yVV-Yrg' );
+          }}
+        >
+     <Text>Assistir</Text>
+</TouchableOpacity>
         </View>
         <View style={styles.video}>
           <YoutubePlayer play={false} height={200} videoId={"3sM3yVV-Yrg"} />
@@ -95,6 +109,13 @@ export default function Paciente() {
         <View style={styles.telaVideo}>
           <Text style={styles.usuario}>Caminhada na Floresta</Text>
           <Text style={styles.info}>8 minutos</Text>
+          <TouchableOpacity
+   onPress={() => {
+      Linking.openURL( 'https://youtu.be/OkWVZa8mwog' );
+          }}
+        >
+     <Text>Assistir</Text>
+</TouchableOpacity>
         </View>
 
         <View style={styles.video}>
@@ -171,13 +192,21 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 50,
     alignItems: "center",
-    marginTop: 15,
     marginLeft: 150,
   },
+  verEvolucoes: {
+    backgroundColor: "#4a8ea8",
+    width: 110,
+    borderRadius: 50,
+    alignItems: "center",
+    marginTop: 15,
+    marginRight: 150,
+  },
 
-  verPerfil: {
-    fontSize: 25,
-    color: "#4a8ea8",
+  descricao: {
+    fontSize: 14,
+    color: "#000000",
+    alignSelf: "flex-start",
   },
 
   linearGradient: {
