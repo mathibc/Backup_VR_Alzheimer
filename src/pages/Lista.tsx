@@ -59,51 +59,17 @@ export default function Lista() {
 
 
     <Card style={styles.cards}>
-         <Card.Title style={styles.cardsTexto} title="Parque" />
-         <Card.Title style={styles.subTexto} title="5 min" />
+         <Card.Title style={styles.cardsTexto} title="Paciente" />
 
         <TouchableOpacity
-          style={styles.assistir} >
-          <Text style={styles.assistirTexto}>Assistir</Text>
+          style={styles.assistir} 
+          onPress={handleStart} >
+          <Text style={styles.assistirTexto}>Ir para Tela Paciente</Text>
         </TouchableOpacity>
 
          <Card.Cover style={styles.imagens} source={{ uri: 'https://www.osmais.com/wallpapers/201308/bicicleta-parque-wallpaper.jpg' }} />
          
         </Card>
-
-        <Card style={styles.cards}>
-         <Card.Title style={styles.cardsTexto} title= "Praia" />
-         <Card.Title style={styles.subTexto} title= "15 min" />
-          <TouchableOpacity 
-          style={styles.assistir} >
-          <Text style={styles.assistirTexto}>Assistir</Text>
-        </TouchableOpacity>
-         <Card.Cover style={styles.imagens} source={{ uri: 'https://profelisson.com.br/wp-content/uploads/2017/11/praia-palmeiras-wallpaper.jpg' }} />
-        </Card>
-
-        <Card style={styles.cards}>
-         <Card.Title style={styles.cardsTexto} title="Floresta" />
-         <Card.Title style={styles.subTexto} title="10 min"  />
-          <TouchableOpacity 
-          style={styles.assistir} >
-          <Text style={styles.assistirTexto}>Assistir</Text>
-        </TouchableOpacity>
-         <Card.Cover style={styles.imagens} source={{ uri:'https://wallpaperaccess.com/full/3352658.jpg' }} />
-        </Card>
-
- 
-
-
-    <View style={styles.telaVideo}>
-     <Text style={styles.usuario}>Valsa Venesiana</Text>
-     <Text style={styles.info}>2 minutos</Text>
-    </View>
-   
-
-    <View style={styles.telaVideo}>
-     <Text style={styles.usuario}>Caminhada na Floresta</Text>
-     <Text style={styles.info}>8 minutos</Text> 
-    </View>
        
        </ScrollView>
 

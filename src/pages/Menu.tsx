@@ -18,10 +18,10 @@ export default function Menu() {
   const navigation = useNavigation(); 
 
   function handleStart(){
-    navigation.navigate('Paciente')
+    navigation.navigate('Lista')
   }
   function handleStart2(){
-    navigation.navigate('Lista')
+    navigation.navigate('AdcionarPaciente')
   }
 
     return (
