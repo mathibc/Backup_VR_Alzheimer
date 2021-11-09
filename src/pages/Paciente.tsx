@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  Linking
+  Linking,
 } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { Card } from "react-native-paper";
@@ -30,12 +30,13 @@ export default function Paciente() {
     navigation.navigate("EvolucaoNova");
   }
   function handleStart2() {
-    navigation.navigate("Lista");
+    navigation.navigate("Menu");
   }
   function handleStart3() {
     navigation.navigate("EvolucaoAnte");
   }
-
+  {
+    /*
   Alert.alert(
     "Como usar?",
     "Para espelhar a tela em Android baixe: Screen Mirror | Para espelhar a tela em IOS baixe: Mirror MacPC.",
@@ -49,10 +50,11 @@ export default function Paciente() {
     ],
     { cancelable: false }
   );
-
+*/
+  }
   const showAlert = () => {
     Alert.alert(
-      "Para espelhar a tela em Android baixe: Screen Mirror. Para espelhar a tela em IOS baixe: Mirror MacPC."
+      "Clique em Assistir no video selecionado, selecione o modo cardboard do Youtube ,e então coloque o celular no VR Box 2.0."
     );
   };
 
@@ -77,49 +79,48 @@ export default function Paciente() {
         </View>
 
         <View style={styles.telaTitulo}>
-
           <Text style={styles.usuario}>Pedro Fonseca</Text>
           <Text style={styles.descricao}>Alzheimer Leve</Text>
           <Text style={styles.descricao}>Postural e Velocidade</Text>
 
-          <TouchableOpacity onPress={handleStart3} style={styles.verEvolucoes}>
-            <Text>Ver Evoluções</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={showAlert} style={styles.comoUsar}>
-            <Text>Como usar?</Text>
-          </TouchableOpacity>
+          <View style={styles.perfil}>
+            <TouchableOpacity
+              onPress={handleStart3}
+              style={styles.verEvolucoes}
+            >
+              <Text style={styles.textoEvo}>Ver Evoluções</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={showAlert} style={styles.comoUsar}>
+              <Text style={styles.textoUsar}>Como usar?</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={styles.telaVideo}>
           <Text style={styles.usuario}>Valsa Venesiana</Text>
-          <Text style={styles.info}>2 minutos</Text>
+          <Text style={styles.info}>10 minutos</Text>
 
           <TouchableOpacity
-   onPress={() => {
-      Linking.openURL( 'https://www.youtube.com/watch?v=3sM3yVV-Yrg' );
-          }}
-        >
-     <Text>Assistir</Text>
-</TouchableOpacity>
-        </View>
-        <View style={styles.video}>
-          <YoutubePlayer play={false} height={200} videoId={"3sM3yVV-Yrg"} />
+            style={styles.assistir}
+            onPress={() => {
+              Linking.openURL("https://youtu.be/GsbimS_-CuM");
+            }}
+          >
+            <Text style={styles.textoAssistir}>Assistir</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.telaVideo}>
           <Text style={styles.usuario}>Caminhada na Floresta</Text>
           <Text style={styles.info}>8 minutos</Text>
           <TouchableOpacity
-   onPress={() => {
-      Linking.openURL( 'https://youtu.be/OkWVZa8mwog' );
-          }}
-        >
-     <Text>Assistir</Text>
-</TouchableOpacity>
-        </View>
-
-        <View style={styles.video}>
-          <YoutubePlayer play={false} height={200} videoId={"OkWVZa8mwog"} />
+            style={styles.assistir}
+            onPress={() => {
+              Linking.openURL("https://youtu.be/OkWVZa8mwog");
+            }}
+          >
+            <Text style={styles.textoAssistir}>Assistir</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
 
@@ -179,8 +180,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     padding: 20,
     width: 320,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderRadius: 20,
   },
 
   video: {
@@ -189,17 +189,16 @@ const styles = StyleSheet.create({
 
   comoUsar: {
     backgroundColor: "#4ba37a",
-    width: 100,
+    width: 110,
     borderRadius: 50,
     alignItems: "center",
     marginLeft: 150,
   },
   verEvolucoes: {
     backgroundColor: "#4a8ea8",
-    width: 110,
+    width: 120,
     borderRadius: 50,
     alignItems: "center",
-    marginTop: 15,
     marginRight: 150,
   },
 
@@ -238,26 +237,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 
-  assistirTexto: {
-    fontSize: 25,
+  textoAssistir: {
+    fontSize: 16,
     color: "white",
-    height: 50,
-    marginTop: 11,
+    height: 20,
     alignItems: "center",
+    alignSelf:"center"
   },
 
   imagens: {
-    borderRadius: 25,
-  },
-
-  assistir: {
-    width: 200,
-    height: 50,
-    backgroundColor: "#81BEF7",
-    marginTop: 25,
-    marginBottom: 10,
-    marginLeft: 46,
-    alignItems: "center",
     borderRadius: 25,
   },
 
@@ -289,5 +277,32 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginBottom: 20,
     marginTop: 20,
+  },
+  perfil: {
+    width: 5,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignSelf: "center",
+    padding: 20,
+  },
+  assistir: {
+    backgroundColor: "#E59021",
+    width: 110,
+    borderRadius: 50,
+    alignSelf:'flex-end'
+  },
+  textoUsar: {
+    fontSize: 16,
+    color: "white",
+    height: 20,
+    alignItems: "center",
+    alignSelf:"center"
+  },
+  textoEvo: {
+    fontSize: 16,
+    color: "white",
+    height: 20,
+    alignItems: "center",
+    alignSelf:"center"
   },
 });

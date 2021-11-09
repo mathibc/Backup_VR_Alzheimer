@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from '../services/api';
 import {
   Text,
   View,
@@ -19,6 +20,32 @@ import { CadastroPaciente } from "../components/CadastroPaciente";
 import { ButtonCinza, ButtonLaranja } from "../components/Button";
 
 export default function Registro() {
+  const [patient_name, setPacient_Name] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [da_stage, setDA_Stage] = useState("");
+  const [march, setMarch] = useState("");
+  const [qp_and_hda, setHDA] = useState("");
+
+  function handleRegisterPatient() {
+    const data = {
+      patient_name,
+      birthdate,
+      da_stage,
+      march,
+      qp_and_hda,
+      user_id:1
+    }
+    console.log(data)
+     api.post("/api/patients",data).then((response) => {
+       console.log(response)
+       if(response.status==200){
+         navigation.navigate("Paciente");
+       }
+     })
+   }
+
+
+
   const navigation = useNavigation();
 
   function handleStart() {
@@ -36,6 +63,7 @@ export default function Registro() {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
     setDate(currentDate);
+    setBirthdate(currentDate)
   };
 
   const showMode = (currentMode) => {
@@ -61,7 +89,10 @@ export default function Registro() {
         <CadastroPaciente/>
         <ScrollView style={style.scrollview}>
           <Text style={style.texto}>Nome</Text>
-          <TextInput style={style.box} />
+          <TextInput 
+          style={style.box}
+          onChangeText={(value) => setPacient_Name(value)}
+           />
 
           <Text style={style.texto}>Data de Nascimento</Text>
           <View style={style.selecionarData}>
@@ -78,12 +109,14 @@ export default function Registro() {
           <TextInput
             placeholder="Leve, Moderada ou Avançada"
             style={style.box}
+            onChangeText={(value) => setDA_Stage(value)}
           />
 
           <Text style={style.texto}>Comprometimento da Marcha</Text>
           <TextInput
             placeholder="Velocidade, Cadência, Postura,..."
             style={style.box}
+            onChangeText={(value) => setMarch(value)}
           />
 
           <Text style={style.texto}>QP e HDA</Text>
@@ -92,6 +125,7 @@ export default function Registro() {
             multiline={true}
             numberOfLines={10}
             style={style.inputBox}
+            onChangeText={(value) => setHDA(value)}
           />
 
           <View style={style.botao}>
@@ -130,11 +164,11 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     fontSize: 16,
-    alignSelf: "flex-start",
-    marginLeft: 30,
+    alignSelf: "center",
     padding: 10,
     paddingTop: 10,
     paddingBottom: 10,
+    
   },
   texto: {
     color: "white",
@@ -155,14 +189,14 @@ const style = StyleSheet.create({
     width: 116,
     alignSelf: "flex-start",
     borderRadius: 10,
-    marginLeft: 30,
+    marginLeft: 40,
   },
   inputBox: {
     height: "20%",
     width: 300,
     maxHeight: 300,
-    marginLeft: 30,
-    justifyContent: "flex-start",
+    alignSelf: 'center',
+    justifyContent: "center",
     backgroundColor: "white",
     borderRadius: 10,
     lineHeight: 20,

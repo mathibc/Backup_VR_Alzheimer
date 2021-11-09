@@ -10,6 +10,7 @@ import EvolucaoAnte from '../pages/EvolucaoAnte'
 import Registro from '../pages/Registro'
 import Lista from '../pages/Lista'
 import AdcionarPaciente from '../pages/AdcionarPaciente'
+import AdcionarUsuario from '../pages/AdcionarUsuario'
 
 const stackRoutes = createStackNavigator();
 
@@ -52,6 +53,10 @@ const AppRoutes : React.FC = () => (
     <stackRoutes.Screen
       name="AdcionarPaciente"
       component={AdcionarPaciente}
+    />
+    <stackRoutes.Screen
+      name="AdcionarUsuario"
+      component={AdcionarUsuario}
     />
  
   </stackRoutes.Navigator>

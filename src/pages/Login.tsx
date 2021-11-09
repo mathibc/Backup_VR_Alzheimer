@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import api from '../services/api';
 import {
   Text,
   View,
@@ -17,12 +18,30 @@ import { ButtonLaranja } from "../components/Button";
 import logo from "../assets/VR_design.png";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const navigation = useNavigation();
 
-  function handleStart() {
+  function handleLogin() {
+   const data = {
+     email,
+     senha
+   }
+   console.log(data)
+    api.post("/api/users/login",data).then((response) => {
+      console.log(response)
+      if(response.status==200){
+        navigation.navigate("Menu");
+      }
+    })
+  }
+  function handleSignIn() {
+    navigation.navigate("AdcionarUsuario");
+  }
+  function handleLog() {
     navigation.navigate("Menu");
   }
-
+    
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <KeyboardAvoidingView
@@ -41,7 +60,7 @@ export default function Login() {
             style={styles.input}
             placeholder="Email"
             autoCorrect={false}
-            onChangeText={() => {}}
+            onChangeText={(value) => setEmail(value)}
           />
 
           <TextInput
@@ -49,13 +68,13 @@ export default function Login() {
             placeholder="Senha"
             autoCorrect={false}
             secureTextEntry={true}
-            onChangeText={() => {}}
+            onChangeText={(value) => setSenha(value)}
           />
           <View style={styles.button}>
-            <ButtonLaranja title={"Entrar"} onPress={handleStart} />
+            <ButtonLaranja title={"Entrar"} onPress={handleLog} />
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleSignIn}>
             <Text style={styles.textt}> Criar Conta </Text>
           </TouchableOpacity>
 

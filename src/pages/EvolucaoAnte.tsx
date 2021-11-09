@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Platform,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -55,34 +56,44 @@ export default function EvolucaoAnte() {
 
       <View>
         <View style={style.selecionarData}>
-          <DateTimePicker
+          <Text style={style.data}>2 Aug 2021</Text>
+          {/*<DateTimePicker
             testID="dateTimePicker"
             value={date}
             is24Hour={true}
             display="default"
             onChange={onChange}
-          />
+          />*/}
+
         </View>
       </View>
 
       <View style={style.box}>
-        <Text style={style.inputBox}> Lorem ipsum bla bla bla bla</Text>
+      <ScrollView style={style.scrollview}>
+        <Text style={style.inputBox}> Paciente refere alteração na marcha há cerca de 3 anos. O quadro foi precedido de perda gradual de destreza em ambas as mãos, em função do tremor ao tentar realizar atividades manuais finas.
+
+Evoluiu com lentificação dos movimentos e dificuldade na marcha. Foi diagnosticado, na época, com Doença de Parkinson e prescrito levodopa, sem melhora.</Text>
+      </ScrollView>
       </View>
 
       <View>
         <View style={style.selecionarData}>
-          <DateTimePicker
+        <Text style={style.data}>20 Aug 2021</Text>
+          {/*<DateTimePicker
             testID="dateTimePicker"
             value={date}
             is24Hour={true}
             display="default"
             onChange={onChange}
-          />
+          />*/}
+
         </View>
       </View>
 
       <View style={style.box}>
-        <Text style={style.inputBox}> Lorem ipsum bla bla bla bla</Text>
+      <ScrollView style={style.scrollview}>
+        <Text style={style.inputBox}> Paciente iniciou melhora no quadro de instabilidade postural, com marcha arrastada e lentificação dos movimentos, de evolução progressiva e com quedas.</Text>
+      </ScrollView>
       </View>
 
       <View style={style.botao}>
@@ -135,5 +146,8 @@ const style = StyleSheet.create({
     padding: 10,
     paddingTop:10,
     paddingBottom:10
+  },
+  data: {
+    alignSelf:'center'
   },
 });

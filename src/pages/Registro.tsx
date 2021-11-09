@@ -60,29 +60,17 @@ export default function Registro() {
         <Avaliacao />
 
         <Text style={style.texto}>Altura do passo</Text>
-        <TextInput style={style.box} />
+        <TextInput keyboardType='numeric' style={style.box} />
 
         <Text style={style.texto}>Largura do passo</Text>
-        <TextInput style={style.box} />
+        <TextInput keyboardType='numeric' style={style.box} />
 
         <Text style={style.texto}>Comprimento do passo</Text>
-        <TextInput style={style.box} />
+        <TextInput keyboardType='numeric' style={style.box} />
 
         <Text style={style.texto}>Quantidade de passos</Text>
-        <TextInput style={style.box} />
+        <TextInput keyboardType='numeric' style={style.box} />
 
-        <Text style={style.texto}>Data</Text>
-        <View>
-          <View style={style.selecionarData}>
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={date}
-              is24Hour={true}
-              display="default"
-              onChange={onChange}
-            />
-          </View>
-        </View>
 
         <View style={style.botao}>
           <ButtonCinza title={"Voltar"} onPress={handleStart}></ButtonCinza>
@@ -108,6 +96,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginBottom: 20,
+    marginTop: 20,
   },
 
   box: {
@@ -116,6 +105,7 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     fontSize: 20,
+    padding: 5
   },
   texto: {
     color: "white",

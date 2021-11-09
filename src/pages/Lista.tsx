@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from '../services/api';
 import {
   Text,
   View,
@@ -31,11 +32,14 @@ export default function Lista() {
     navigation.navigate("Paciente");
   }
 
-  const mockData = [
-    { id: "1", text: "Expo 💙" },
-    { id: "2", text: "is" },
-    { id: "3", text: "Awesome!" },
+  var mockData = [
+    { patient_name: "1", id: "Expo 💙" }
   ];
+
+  api.get("/api/patients").then((response) => {
+    console.log(response)
+    mockData=response.data
+  })
   
 
   return (
@@ -53,19 +57,22 @@ export default function Lista() {
       </View>
 
       <ScrollView style={styles.scrollview}>
+    
+
         {/*Aqui jás um searchzinho
+
 
     <View><FlatList
       data={mockData}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
         <Text style={{ fontSize: 22 }}>
-          {item.id} - {item.text}
+          {item.patient_name}
         </Text>
       )}
     /></View>
+    */}
 
-*/}
         <TouchableOpacity onPress={handleStart2}>
         
           <View style={styles.telaTitulo}>

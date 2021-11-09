@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     titulo:{
         fontSize: 26,
         color: "#FFFFFF",
-        alignItems:'center'
+        alignItems:'center',
+        marginTop:20
     }
 })
